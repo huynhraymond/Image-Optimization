@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="base.css" />
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+            var file = this.files[0];
+
+            generateDataURI(file);
+        });
+    });
+
+    function generateDataURI(file) {
+
+    }
+</script>
+<body>
+    <input type="file">
+    <div></div>
+</body>
+</html>
+
+<!--
+var contentType = Components.classes["@mozilla.org/mime;1"]
+.getService(Components.interfaces.nsIMIMEService)
+.getTypeFromFile(file);
+var inputStream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+.createInstance(Components.interfaces.nsIFileInputStream);
+inputStream.init(file, 0x01, 0600, 0);
+var stream = Components.classes["@mozilla.org/binaryinputstream;1"]
+.createInstance(Components.interfaces.nsIBinaryInputStream);
+stream.setInputStream(inputStream);
+var encoded = btoa(stream.readBytes(stream.available()));
+return "data:" + contentType + ";base64," + encoded;
+-->

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+    div#display {
+        background-image: url('images/sprite-icons.jpg');
+        background-position: -39px -39px;
+        background-repeat: no-repeat;
+        margin: 2em;
+        width: 70px;
+        height: 70px;
+    }
+</style>
+<script>
+
+    var socials = ['Twitter', 'RSS', 'Facebook', ' ', 'Google+', 'Pinterest', 'Evernote', 'Vimeo', 'YouTube',
+                    'Linked', 'FlickR', ' ', ' ', 'Zeebox', ' ', 'Blogger', 'Digg', 'WordPress'];
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        var select = document.querySelector('select');
+
+        for ( var i = 0, len = socials.length; i < len; i++ ) {
+            var option = document.createElement('option');
+            option.value = i;
+            option.textContent = socials[i];
+            select.appendChild(option);
+        }
+
+        document.querySelector('select').addEventListener('change', function(e) {
+            var value = parseInt(e.target.value);
+
+            var height = ~~(value / 6);
+            var width = value % 6;
+
+            var offset = -84;
+            var init = -35;
+
+            var img = document.querySelector('div#display');
+            img.style.backgroundPosition = (init + (width * offset) + 'px ') + (init + (height * offset) + 'px');
+
+            //console.log('Width: ', width, init + (width * offset));
+            //console.log('Height: ', height, init + (height * offset));
+        });
+    });
+</script>
+<body>
+    <img src="images/sprite-icons.jpg" />
+    <select>
+        <!--
+        <option value=0>Twitter</option>
+        <option value=1>RSS</option>
+        <option value=2>Facebook</option>
+        <option value=3> </option>
+        <option value=4>Google+</option>
+        <option value=5>Pinterest</option>
+        <option value=6>Evernote</option>
+        <option value=7>Vimeo</option>
+        <option value=8>YouTube</option>
+        <option value=9>Linked</option>
+        <option value=10>FlickR</option>
+        <option value=11>RSS</option>
+        <option value=12>Facebook</option>
+        <option value=13>Zeebox</option>
+        <option value=14>Google+</option>
+        <option value=15>Blogger</option>
+        <option value=16>Digg</option>
+        <option value=17>WordPress</option>
+        -->
+    </select>
+    <div id="display"></div>
+</body>
+</html>
